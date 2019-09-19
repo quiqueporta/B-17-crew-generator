@@ -16,16 +16,16 @@ type fullName struct {
 	Last  string `json:"last,omitempty"`
 }
 
+func (fullName *fullName) fullName() string {
+	return strings.Title(fullName.First + " " + fullName.Last)
+}
+
 type name struct {
 	Name fullName `json:"name,omitempty"`
 }
 
 type results struct {
 	Results []name `json:"results,omitempty"`
-}
-
-func (fullName *fullName) fullName() string {
-	return strings.Title(fullName.First + " " + fullName.Last)
 }
 
 func generateRandomNames() []name {
@@ -75,11 +75,10 @@ func drawCrewCard(pdf *gofpdf.Fpdf, x, y float64, role string, image string, nam
 }
 
 func main() {
-	var randomNames = generateRandomNames()
-
 	pdf := gofpdf.New("P", "mm", "A4", "")
 	pdf.AddPage()
 
+	var randomNames = generateRandomNames()
 	drawCrewCard(pdf, 20, 11, "Bombardero", "images/bombardero.jpg", randomNames[0].Name.fullName())
 	drawCrewCard(pdf, 110, 11, "Navegante", "images/navegante.jpg", randomNames[1].Name.fullName())
 	drawCrewCard(pdf, 20, 64, "Piloto", "images/piloto.jpg", randomNames[2].Name.fullName())
@@ -90,7 +89,9 @@ func main() {
 	drawCrewCard(pdf, 110, 168, "Ametrallador Babor", "images/ametrallador_babor.jpg", randomNames[7].Name.fullName())
 	drawCrewCard(pdf, 20, 221, "Ametrallador Estribor", "images/ametrallador_estribor.jpg", randomNames[8].Name.fullName())
 	drawCrewCard(pdf, 110, 221, "Ametrallador de Cola", "images/ametrallador_de_cola.jpg", randomNames[9].Name.fullName())
+
 	err := pdf.OutputFileAndClose("B-17_crew.pdf")
+
 	if err != nil {
 		log.Fatal(err)
 	}
