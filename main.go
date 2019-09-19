@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -81,16 +80,18 @@ func main() {
 	pdf := gofpdf.New("P", "mm", "A4", "")
 	pdf.AddPage()
 
-	drawCrewCard(pdf, 20, 11, "Bombardero", "bombardero.jpg", randomNames[0].Name.fullName())
-	drawCrewCard(pdf, 110, 11, "Navegante", "navegante.jpg", randomNames[1].Name.fullName())
-	drawCrewCard(pdf, 20, 64, "Piloto", "piloto.jpg", randomNames[2].Name.fullName())
-	drawCrewCard(pdf, 110, 64, "Copiloto", "copiloto.jpg", randomNames[3].Name.fullName())
-	drawCrewCard(pdf, 20, 117, "Ingeniero", "ingeniero.jpg", randomNames[4].Name.fullName())
-	drawCrewCard(pdf, 110, 117, "Operador de Radio", "operador_de_radio.jpg", randomNames[5].Name.fullName())
-	drawCrewCard(pdf, 20, 168, "Ametrallador Ventral", "ametrallador_ventral.jpg", randomNames[6].Name.fullName())
-	drawCrewCard(pdf, 110, 168, "Ametrallador Babor", "ametrallador_babor.jpg", randomNames[7].Name.fullName())
-	drawCrewCard(pdf, 20, 221, "Ametrallador Estribor", "ametrallador_estribor.jpg", randomNames[8].Name.fullName())
-	drawCrewCard(pdf, 110, 221, "Ametrallador de Cola", "ametrallador_de_cola.jpg", randomNames[9].Name.fullName())
+	drawCrewCard(pdf, 20, 11, "Bombardero", "images/bombardero.jpg", randomNames[0].Name.fullName())
+	drawCrewCard(pdf, 110, 11, "Navegante", "images/navegante.jpg", randomNames[1].Name.fullName())
+	drawCrewCard(pdf, 20, 64, "Piloto", "images/piloto.jpg", randomNames[2].Name.fullName())
+	drawCrewCard(pdf, 110, 64, "Copiloto", "images/copiloto.jpg", randomNames[3].Name.fullName())
+	drawCrewCard(pdf, 20, 117, "Ingeniero", "images/ingeniero.jpg", randomNames[4].Name.fullName())
+	drawCrewCard(pdf, 110, 117, "Operador de Radio", "images/operador_de_radio.jpg", randomNames[5].Name.fullName())
+	drawCrewCard(pdf, 20, 168, "Ametrallador Ventral", "images/ametrallador_ventral.jpg", randomNames[6].Name.fullName())
+	drawCrewCard(pdf, 110, 168, "Ametrallador Babor", "images/ametrallador_babor.jpg", randomNames[7].Name.fullName())
+	drawCrewCard(pdf, 20, 221, "Ametrallador Estribor", "images/ametrallador_estribor.jpg", randomNames[8].Name.fullName())
+	drawCrewCard(pdf, 110, 221, "Ametrallador de Cola", "images/ametrallador_de_cola.jpg", randomNames[9].Name.fullName())
 	err := pdf.OutputFileAndClose("B-17_crew.pdf")
-	fmt.Println(err)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
