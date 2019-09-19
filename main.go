@@ -91,6 +91,6 @@ func main() {
 	drawCrewCard(pdf, 110, 168, "Ametrallador Babor", "ametrallador_babor.jpg", randomNames[7].Name.fullName())
 	drawCrewCard(pdf, 20, 221, "Ametrallador Estribor", "ametrallador_estribor.jpg", randomNames[8].Name.fullName())
 	drawCrewCard(pdf, 110, 221, "Ametrallador de Cola", "ametrallador_de_cola.jpg", randomNames[9].Name.fullName())
-	err := pdf.OutputFileAndClose("b-17_crew.pdf")
+	err := pdf.OutputFileAndClose("B-17_crew.pdf")
 	fmt.Println(err)
 }
