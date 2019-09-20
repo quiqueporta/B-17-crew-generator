@@ -13,7 +13,15 @@ You can download the `print a play` version from the [Felipe Santamaría webpage
 ```go
 go run main.go
 ```
-This command generates a `b-17_crew.pdf` file with the B-17 crew.
+This command generates a `B-17_crew.pdf` file with the B-17 crew.
+
+Also you can run a HTTP server to generate the PDF.
+```go
+go run http/main.go
+```
+Then you can access to http://localhost:8080 to get the PDF.
+
+
 
 # Result example
 
